@@ -82,6 +82,7 @@ hr {
   overflow: visible;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -16022,11 +16023,11 @@ be a descendant of the grid when it is being dragged.
   display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
-  color: #FFF;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
+
 
 .widget-small .icon {
   display: -webkit-box;
