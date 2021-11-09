@@ -76,6 +76,12 @@
          return $token;
      }
 
+     function idCliente()
+     {
+         $r1 = bin2hex(random_bytes(2));
+         $token = 'HN-'.$r1;
+         return $token;
+     }
     
     function passGenerator($length = 10)
     {
