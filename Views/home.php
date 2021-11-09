@@ -38,7 +38,7 @@
       <div class="widget-small primary coloured-icon"><i class="icon fas fa-bed fa-3x"></i>
         <div class="info">
           <h4>Habitacion</h4>
-          <p><b>500</b> - Ocupadas</p>
+          <p><b id="numeroHabitaciones"></b> - Disponibles</p>
         </div>
       </div>
     </a>
@@ -48,7 +48,7 @@
       <div class="widget-small primary coloured-icon"><i class="icon fas fa-concierge-bell fa-3x"></i>
         <div class="info">
           <h4>Estadia</h4>
-          <p><b>10</b> - Disponibles</p>
+          <p><b id="numeroEstadia"></b> - Ocupadas</p>
         </div>
       </div>
      </a>

@@ -44,9 +44,31 @@ CREATE TABLE `habitacion` (
   CONSTRAINT `fk_tipo` FOREIGN KEY (`tipo`) REFERENCES `tipohabitacion` (`idTipoHabitacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO habitacion VALUES("101","1","560","1","1",".");
-INSERT INTO habitacion VALUES("102","2","560","1","0",".");
-INSERT INTO habitacion VALUES("103","1","560","1","0",".");
+INSERT INTO habitacion VALUES("101","1","700","1","1",".");
+INSERT INTO habitacion VALUES("102","2","900","1","1",".");
+INSERT INTO habitacion VALUES("103","2","900","1","0",".");
+INSERT INTO habitacion VALUES("104","3","1500","1","0",".");
+INSERT INTO habitacion VALUES("105","1","700","1","0",".");
+INSERT INTO habitacion VALUES("106","1","700","1","0",".");
+INSERT INTO habitacion VALUES("107","1","700","1","0",".");
+INSERT INTO habitacion VALUES("108","1","700","1","0",".");
+INSERT INTO habitacion VALUES("201","1","700","2","0",".");
+INSERT INTO habitacion VALUES("202","2","900","2","0",".");
+INSERT INTO habitacion VALUES("203","2","900","2","0",".");
+INSERT INTO habitacion VALUES("204","2","900","2","0",".");
+INSERT INTO habitacion VALUES("205","1","700","2","0",".");
+INSERT INTO habitacion VALUES("206","1","700","2","0",".");
+INSERT INTO habitacion VALUES("207","1","700","2","0",".");
+INSERT INTO habitacion VALUES("208","1","700","2","0",".");
+INSERT INTO habitacion VALUES("209","4","2000","2","0","Anturio");
+INSERT INTO habitacion VALUES("210","4","2000","2","0","Orquidea");
+INSERT INTO habitacion VALUES("301","1","700","3","0",".");
+INSERT INTO habitacion VALUES("302","2","900","3","0",".");
+INSERT INTO habitacion VALUES("303","2","900","3","0",".");
+INSERT INTO habitacion VALUES("304","3","1500","3","0",".");
+INSERT INTO habitacion VALUES("305","4","2000","3","0","Girasol");
+INSERT INTO habitacion VALUES("306","4","2000","3","0","Tulipan");
+INSERT INTO habitacion VALUES("401","5","0","4","0","No se renta");
 
 
 

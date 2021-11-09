@@ -6,7 +6,7 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> <?= $data['page_tittle'];?></h1>
+            <h1><i class="fas fa-bed"></i> <?= $data['page_tittle'];?></h1>
             <p>Creacion de tipo de Habitaciones</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">

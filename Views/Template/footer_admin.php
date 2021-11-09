@@ -13,7 +13,7 @@
 
     <script src="<?= media();?>/js/fontawesome.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="<?= media();?>/js/plugins/pace.min.js"></script>
+    <!-- <script src="<?= media();?>/js/plugins/pace.min.js"></script> -->
     <script src="<?= media();?>/js/functions_nav.js"></script>
     <!-- SweetAlert2 -->
     <script src="<?=media();?>/plugins/sweetalert2/sweetalert2.min.js"></script>
