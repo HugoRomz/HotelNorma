@@ -1,13 +1,13 @@
 <?php 
     headerAdmin($data); 
-    //getModal('modalHabitacion',$data);
+    // getModal('modalHabitacion',$data);
 ?>
 
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class=" fas fa-concierge-bell"></i> <?= $data['page_title'];?></h1>
-            <p>Registro de Habitaciones reservadas</p>
+            <h1><i class="fas fa-bed"></i> <?= $data['page_title'];?></h1>
+            <p>Creacion de Reservaciones</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body">
-                    <h5>Registro de Reservaciones</h5>
+                    <h5>Registro de Reserva</h5>
                     <button type="button" class="btn btn-danger" onclick="openModal();"><i
                             class="fas fa-plus-circle"></i> Nuevo</button>
                 </div>
@@ -29,12 +29,12 @@
                             <table id="datatableReservacion" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th style="width: 10%;">N° Habitacion</th>
-                                        <th>Fecha de Ingreso</th>
-                                        <th>Fecha de Salida</th>
-                                        <th>N° Personas</th>
-                                        <th>Id. Cliente</th>
-                                        <th style="width: 10%;">OP</th>
+                                       <th>Id. Reserva</th>
+                                       <th>No Habitacion</th>
+                                       <th>Fecha de Entrada</th>
+                                       <th>Fecha Salida</th>
+                                       <th>Estado</th>
+                                       <th>OP</th>
                                     </tr>
                                 </thead>
                                 <tbody>

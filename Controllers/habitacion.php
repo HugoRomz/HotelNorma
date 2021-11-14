@@ -44,15 +44,16 @@ class Habitacion extends Controllers{
             $strTipoHabitacion = intval($_POST['selectTipoHabitacion']);
             $strPrecio = strClean($_POST['inputPrecioHabitacion']);
             $NumeroPiso= intval($_POST['inputNumeroPiso']);
+            $NumeroPersona= intval($_POST['inputNumeroPersonas']);
             $CaracteristicaHabitacion = strClean($_POST['inputCaracteristicaHabitacion']);
 
             if ($id == 0) {
                 $option = 1;
                 //Crear
-                $request_Habitacion = $this->model->insertHabitacion($IdHabitacion,$strTipoHabitacion,$strPrecio,$NumeroPiso,$CaracteristicaHabitacion);
+                $request_Habitacion = $this->model->insertHabitacion($IdHabitacion,$strTipoHabitacion,$strPrecio,$NumeroPiso,$NumeroPersona,$CaracteristicaHabitacion);
              }else {
                 //Actualizar
-                $request_Habitacion = $this->model->updateHabitacion($id,$IdHabitacion,$strTipoHabitacion,$strPrecio,$NumeroPiso,$CaracteristicaHabitacion);
+                $request_Habitacion = $this->model->updateHabitacion($id,$IdHabitacion,$strTipoHabitacion,$strPrecio,$NumeroPiso,$NumeroPersona,$CaracteristicaHabitacion);
                 $option=2;
             }
       

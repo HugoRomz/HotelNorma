@@ -1,6 +1,8 @@
 <script>
   const base_url = "<?= base_url()?>";
 </script>
+
+
     <!-- Essential javascripts for application to work-->
     <script src="<?= media();?>/js/jquery-3.3.1.min.js"></script>
     <script src="<?= media();?>/js/popper.min.js"></script>
@@ -19,7 +21,9 @@
     <script src="<?=media();?>/plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- Select2 -->
     <script src="<?=media();?>/js/plugins/bootstrap-select.min.js"></script>
-
+    <!-- Calendar -->
+    <script src="<?=media();?>/js/calendar/main2.js"></script>
+    
     <script src="<?= media(); ?>/js/<?= $data['page_functions_js']; ?>"></script>
     <!-- Page specific javascripts-->
     <!-- Google analytics script-->

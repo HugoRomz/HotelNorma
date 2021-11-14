@@ -35,6 +35,11 @@
                                     placeholder="Numero de piso">
                             </div>
                             <div class="form-group">
+                                <label>Numero de Personas:</label>
+                                <input type="text" class="form-control" name="inputNumeroPersonas" id="inputNumeroPersonas"
+                                    placeholder="Numero de personas">
+                            </div>
+                            <div class="form-group">
                                 <label>Caracteristica:</label>
                                 <input type="text" class="form-control" name="inputCaracteristicaHabitacion"
                                     id="inputCaracteristicaHabitacion" placeholder="Caracteristica de la Habitación">

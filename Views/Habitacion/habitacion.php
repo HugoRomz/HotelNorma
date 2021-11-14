@@ -33,6 +33,7 @@
                                         <th>Tipo</th>
                                         <th style="width: 10%;">Precio</th>
                                         <th style="width: 10%;">No. Piso</th>
+                                        <th style="width: 10%;">No. Personas</th>
                                         <th>Caracteristica</th>
                                         <th style="width: 10%;">Status</th>
                                         <th style="width: 10%;">OP</th>

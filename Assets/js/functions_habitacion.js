@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 "data": "no_piso"
             },
             {
+                "data": "no_personas"
+            },
+            {
                 "data": "caracteristica"
             },
             {
@@ -35,25 +38,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 "data": "options"
             }
         ],
-        // 'dom': 'lBfrtip',
-        // 'buttons': [
-        //     {
-        //         "extend": "copyHtml5",
-        //         "text": "<i class='far fa-copy'></i> Copiar",
-        //         "titleAttr":"Copiar",
-        //         "className": "btn btn-secondary"
-        //     },{
-        //         "extend": "excelHtml5",
-        //         "text": "<i class='fas fa-file-excel'></i> Excel",
-        //         "titleAttr":"Esportar a Excel",
-        //         "className": "btn btn-success"
-        //     },{
-        //         "extend": "csvHtml5",
-        //         "text": "<i class='fas fa-file-csv'></i> CSV",
-        //         "titleAttr":"Esportar a CSV",
-        //         "className": "btn btn-info"
-        //     }
-        // ],
+        'dom': 'lBfrtip',
+        'buttons': [
+            {
+                "extend": "copyHtml5",
+                "text": "<i class='far fa-copy'></i> Copiar",
+                "titleAttr":"Copiar",
+                "className": "btn btn-secondary"
+            },{
+                "extend": "excelHtml5",
+                "text": "<i class='fas fa-file-excel'></i> Excel",
+                "titleAttr":"Esportar a Excel",
+                "className": "btn btn-success"
+            },{
+                "extend": "csvHtml5",
+                "text": "<i class='fas fa-file-csv'></i> CSV",
+                "titleAttr":"Esportar a CSV",
+                "className": "btn btn-info"
+            }
+        ],
         "responsive": "true",
         "Destroy": "true",
 
@@ -68,9 +71,10 @@ document.addEventListener('DOMContentLoaded', function () {
             var strTipoHabitacion = document.querySelector('#selectTipoHabitacion').value;
             var strPrecioHabitacion = document.querySelector('#inputPrecioHabitacion').value;
             var strNumeroPiso = document.querySelector('#inputNumeroPiso').value;
+            var strNumeroPersonas = document.querySelector('#inputNumeroPersonas').value;
             var strCaracteristicaHabitacion = document.querySelector('#inputCaracteristicaHabitacion').value;
 
-            if (intIdHabitacion == '',strTipoHabitacion == '',strPrecioHabitacion == '',strNumeroPiso == '',strCaracteristicaHabitacion=='') {
+            if (intIdHabitacion == '',strTipoHabitacion == '',strPrecioHabitacion == '',strNumeroPiso == '',strCaracteristicaHabitacion=='',strNumeroPersonas == '') {
 
                 Swal.fire({
                     icon: 'error',
@@ -183,6 +187,7 @@ function fntEditHabitacion(button) {
                 document.querySelector("#selectTipoHabitacion").value = objData.data.tipo;
                 document.querySelector("#inputPrecioHabitacion").value = objData.data.precio;
                 document.querySelector("#inputNumeroPiso").value = objData.data.no_piso;
+                document.querySelector("#inputNumeroPersonas").value = objData.data.no_personas;
                 document.querySelector("#inputCaracteristicaHabitacion").value = objData.data.caracteristica;
                 $('#selectTipoHabitacion').selectpicker('render');
                 
