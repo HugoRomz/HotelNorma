@@ -23,13 +23,15 @@
     
 
         <form class="forget-form" id="formPasswordReset2" name="formPasswordReset" action="">
-          <input type="hidden" id="idUsuario2" name="idUsuario" value="<?= $data['idusuario']; ?>" required>
+          <input type="hidden" id="idUsuario2" name="idUsuario2" value="<?= $data['idusuario']; ?>" required>
+          <input type="hidden" id="txtEmail" name="txtEmail" value="<?= $data['correo']; ?>" required>
+          <input type="hidden" id="txtToken" name="txtToken" value="<?= $data['token']; ?>" required>
           <h3 class="login-head"></i> Cambiar contraseña </h3>
           <div class="form-group">
-            <input class="form-control" type="password" id="txtPassword2" name="txtPassword" placeholder="Nueva contraseña">
+            <input class="form-control" type="password" id="txtPassword2" name="txtPassword2" placeholder="Nueva contraseña">
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" id="txtPasswordConfirm2" name="txtPasswordConfirm" placeholder="Confirmar contraseña">
+            <input class="form-control" type="password" id="txtPasswordConfirm2" name="txtPasswordConfirm2" placeholder="Confirmar contraseña">
           </div>
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>Resetear</button>

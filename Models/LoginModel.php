@@ -56,7 +56,16 @@ class LoginModel extends Mysql
         $request = $this->select($sql);
         return $request;
     }
+    public function insertPassword(int $idUsuario, string $password)
+    {
+        $this->intIdUsuario = $idUsuario;
+        $this->strPassword = $password;
+        $sql = "UPDATE usuario SET password = ?, token = ? WHERE idusuario = $this->intIdUsuario";
+        $arrData = array($this->strPassword,"");
+        $request = $this->update($sql,$arrData);
+        return $request;
 
+    }
 
 }
 

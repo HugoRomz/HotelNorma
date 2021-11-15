@@ -17,7 +17,14 @@
 	const SPD = ".";
 	const SPM = ",";
 
+
 	//Simbolo de moneda
 	const SMONEY = "$";
+
+
+	//Datos envio de correo
+	const NOMBRE_REMITENTE = "Hotel Norma";
+	const EMAIL_REMITENTE = "rosalesrafael1@hotmail.com";
+	const NOMBRE_EMPRESA = "Hotel Norma";
 
  ?>

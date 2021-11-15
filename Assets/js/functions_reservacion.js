@@ -58,10 +58,87 @@ document.addEventListener('DOMContentLoaded', function () {
                 "className": "btn btn-info"
             }
         ],
+        "order": [[ 1, "asc" ]],
         "responsive": "true",
         "Destroy": "true",
 
     });
+
+
+
+    if (document.querySelector("#formReservacion")) {
+        var formReservacion = document.querySelector("#formReservacion");
+        formReservacion.onsubmit = function (e) {
+            e.preventDefault();
+
+            
+            var strSelectCliente = document.querySelector('#selectCliente').value;
+            var intNumeroDias = document.querySelector('#inputNumeroDias').value;
+            var strFechaEntrada = document.querySelector('#inputFechaEntrada').value;
+            var strFechaSalida = document.querySelector('#inputFechaSalida').value;
+            var strConcepto = document.querySelector('#selectConcepto').value;
+
+            if (strSelectCliente=='', strFechaEntrada=='', strFechaSalida=='',  strConcepto=='', intNumeroDias=='') {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ATENCION',
+                    text: 'Todos los campos son obligatorios!',
+                });
+                return false;
+            }
+            
+
+            var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XNLHTTP');
+            var ajaxUrl = base_url + 'Reservacion/setReservacion';
+
+            var formData = new FormData(formReservacion);
+            request.open('POST', ajaxUrl, true);
+            request.send(formData);
+            console.log(request);
+
+            request.onreadystatechange = function () {
+
+                if (request.readyState == 4 && request.status == 200) {
+                    var objData = JSON.parse(request.responseText);
+
+                    if (objData.status) {
+                        $('#modalReserva').modal('hide');
+                        formReservacion.reset();
+                      
+                        if (objData.msg == '1') {
+                            
+                            Swal.fire(
+                                'Guardado!',
+                                'Se guardo exitosamente',
+                                'success'
+                            )
+                        } else {
+                            Swal.fire(
+                                'Editado!',
+                                'Se actualizo exitosamente',
+                                'success'
+                            )
+                        }
+                        tableRerservacion.ajax.reload(function () {
+
+                        });
+
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            'No se pudo realizar la accion',
+                            'error'
+                        )
+                    }
+                }
+                return false;
+            }
+        }
+    }
+
+
+
 
 });
 
@@ -101,6 +178,7 @@ function fntCliente() {
 }
 
 function fntIngresoReservacion(button) {
+    globalThis.PrecioHabitacion = button.getAttribute("precio");
 
     $('#modalreserva').modal('show');
 }

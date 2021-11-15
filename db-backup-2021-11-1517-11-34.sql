@@ -23,10 +23,22 @@ INSERT INTO cliente VALUES("HN-a5b7","Jilmar Joancy","Perello Solorio","Tapachul
 
 
 CREATE TABLE `detalle_pago` (
-  `idreserva` varchar(10) DEFAULT NULL,
+  `no_habitacion` varchar(10) DEFAULT NULL,
   `idpago` varchar(250) NOT NULL,
   `consecutivo` int(11) NOT NULL,
   PRIMARY KEY (`idpago`,`consecutivo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+
+
+CREATE TABLE `detalle_reservacion` (
+  `idreserva` varchar(250) NOT NULL,
+  `no_habitacion` varchar(10) DEFAULT NULL,
+  `consecutivo` int(11) NOT NULL,
+  PRIMARY KEY (`idreserva`,`consecutivo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -95,12 +107,12 @@ INSERT INTO habitacion VALUES("401","5","0","4","1","0","No se renta");
 
 
 CREATE TABLE `pago` (
-  `idpago` varchar(250) DEFAULT NULL,
+  `idpago` varchar(250) NOT NULL,
   `concepto` text DEFAULT NULL,
   `fecha_salida` date DEFAULT NULL,
   `total` float DEFAULT NULL,
-  `no_dias` int(11) NOT NULL,
-  `idcliente` varchar(250) DEFAULT NULL
+  `idcliente` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`idpago`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -178,8 +190,8 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`idusuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO usuario VALUES("1","hotelnorma","hotelnorma","Norma ","Sanchez Cabrera","9621605433","Laureles 2","rosalesrafael1@hotmail.com","1","2e544e2b2fbc5e65fb9a-57948f4cbfe961c56299-6aab9ad0da9197759c21-4561a3a98512e7c7dfab");
-INSERT INTO usuario VALUES("6","Romz","melendez1R","Hugo","Rosales","9621705041","fdsafsd","carlitos1@hotmail.com","1","8de7d580006228e0e270-845466a3527151566075-09182f14d54a51d57a33-cef369e2f132b6352d8c");
+INSERT INTO usuario VALUES("1","hotelnorma","0611680f8481562b254191258f0201e9f138ad3a9b9115566ff344bdcfc000e1","Norma ","Sanchez Cabrera","9621605433","Laureles 2","hugo.rosales98@unach.mx","1","");
+INSERT INTO usuario VALUES("6","Romz","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","Hugo","Rosales","9621705041","fdsafsd","carlitos1@hotmail.com","1","cbb44d6ac12939fdee18-7010fe7ba5b075afb4f6-dcb366d5180c293efa77-761f94b8b443d2059f85");
 
 
 

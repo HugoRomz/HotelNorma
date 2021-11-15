@@ -8,20 +8,20 @@ class ReservacionModel extends Mysql
     }
 
 
-    // public function insertHabitacion(int $idHabitacion,String $strTipoHabitacion,String $strPrecio,int $NumeroPiso,int $NumeroPersonas,String $CaracteristicaHabitacion)
-    // {
-    //     $status = 'ocupado';
-    //     $query_insert = "INSERT INTO habitacion (no_habitacion,tipo,precio,no_piso,no_personas,status,caracteristica) VALUES(?,?,?,?,?,?,?)";
-    //     $arrData = array($idHabitacion,$strTipoHabitacion,$strPrecio,$NumeroPiso,$NumeroPersonas,$status,$CaracteristicaHabitacion);
-    //     $request_insert = $this->insert($query_insert, $arrData);
-    //     return $request_insert;
-    // }
+    public function insertPago(int $intIdPago,String $strConcepto,String $strFechaSalida,int $total,int $intNumeroDias,String $strSelectCliente)
+    {
+        $query_insert = "INSERT INTO pago (idpago,concepto,fecha_salida,total,no_dias,idcliente) VALUES(?,?,?,?,?,?)";
+        $arrData = array($intIdPago,$strConcepto,$strFechaSalida,$total,$intNumeroDias,$strSelectCliente);
+        $request_insert = $this->insert($query_insert, $arrData);
+        return $request_insert;
+    }
+    
 
     
 
     public function selectReservacion()
     {
-        $sql = "SELECT reservacion.*,tipohabitacion.Concepto,habitacion.status 
+        $sql = "SELECT reservacion.*,tipohabitacion.Concepto,habitacion.status,habitacion.precio 
                  FROM reservacion,habitacion,tipohabitacion 
                  WHERE reservacion.no_habitacion = habitacion.no_habitacion 
                  AND habitacion.tipo = tipohabitacion.idTipoHabitacion;";

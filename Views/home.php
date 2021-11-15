@@ -11,7 +11,6 @@
       <li class="breadcrumb-item"><a href="<?= base_url();?>"><?= $data['page_tag'];?></a></li>
     </ul>
   </div>
-
   <div class="row">
     <!-- <div class="col-md-6 col-lg-4">
       <a style="text-decoration:none" href="#">

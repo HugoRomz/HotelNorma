@@ -28,7 +28,8 @@ class login extends Controllers{
             }else {
                 $strUsuario = strtolower(strClean($_POST['txtUsuario']));
                 $strPassword = strClean($_POST['txtPassword']);
-                $requestUser = $this->model->loginUser($strUsuario,$strPassword);
+                $strPassworde = hash("SHA256",$strPassword);
+                $requestUser = $this->model->loginUser($strUsuario,$strPassworde);
                 
                 if (empty($requestUser)) {
                     $arrResponse = array('status' => false,'msg' =>'El usuario o la constraseña es incorrecta');
@@ -69,8 +70,21 @@ class login extends Controllers{
 
                     $requestUpdate = $this->model->setTokenUser($idUsuario,$token);
 
+                    $data = array('nombreUsuario' => $nombreUsuario,
+											 'email' => $strEmail,
+											 'asunto' => 'Recuperar cuenta - ',
+											 'url_recovery' => $url_recovery);
+                
+
                     if ($requestUpdate) {
-                        $arrResponse = array('status' => true,'msg' => 'Se ha enviado un email a tu cuenta de correo para cambiar la contraseña' );
+
+                        $sendEmail = sendEmailLocal($data,'email_cambioPassword');
+
+                        if($sendEmail){
+                            $arrResponse = array('status' => true,'msg' => 'Se ha enviado un email a tu cuenta de correo para cambiar la contraseña' );
+                        }else{
+                            $arrResponse = array('status' => false,'msg' => 'No es posible realizar el proceso, intente mas tarde.' );
+                        }
                     }else {
                         $arrResponse = array('status' => false,'msg' => 'No es posible realizar el proceso, intente mas tarde.' );
                     }
@@ -96,6 +110,8 @@ class login extends Controllers{
                 $data['page_tag'] = "Cambiar contraseña"; 
                 $data['page_name'] = "cambiar_contrasenia";
                 $data['page_title'] = "Cambiar Contraseña <small> Hotel Norma </small>";
+                $data['correo'] = $strEmail;
+                $data['token'] = $strToken;
                 $data['idusuario'] = $arrResponse['idusuario'];
                 $data['page_function_js']="function_login.js";
                 $this->views->getView($this,"cambiar_password",$data);
@@ -104,8 +120,42 @@ class login extends Controllers{
         die();
     }
 
-    public function setPassword(){
-        dep($_POST);
+    public function setPassword() {
+            
+
+        if(empty($_POST['idUsuario2'])  || empty($_POST['txtEmail']) || empty($_POST['txtToken']) || empty($_POST['txtPassword2']) || empty($_POST['txtPasswordConfirm2'])){
+
+            $arrResponse = array('status' => false, 'msg' => 'Error de datos' );
+           
+                                 
+        }else{
+            $intIdusuario = intval($_POST['idUsuario2']);
+            $strPassword = $_POST['txtPassword2'];
+            $strPasswordConfirm = $_POST['txtPasswordConfirm2'];
+            $strEmail = strClean($_POST['txtEmail']);
+            $strToken = strClean($_POST['txtToken']);
+        
+            
+                if($strPassword != $strPasswordConfirm){
+                 $arrResponse = array('status' => false, 'msg' => 'Las contraseñas no son iguales.' );
+                }
+                else{
+                    $arrResponseUser = $this->model->getUsuario($strEmail,$strToken);
+                    if(empty($arrResponseUser)){
+                        $arrResponse = array('status' => false, 'msg' => 'Error de datos.' );
+                    }else{
+                        $strPassword = hash("SHA256",$strPassword);
+                        $requestPass = $this->model->insertPassword($intIdusuario,$strPassword);
+                    if($requestPass)
+                    {
+                        $arrResponse = array('status' => true, 'msg' => 'Contraseña actualizada con éxito.' );
+                    }else{
+                        $arrResponse = array('status' => false, 'msg' => 'No es posible realizar el proceso, intente nuevamente más tarde.' );
+                    }
+                    }
+                }
+        }
+        echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
         die();
     }
 }

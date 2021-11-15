@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if(request.status == 200){
 
             var objData = JSON.parse(request.responseText);
+           
             if(objData.status)
             {
               Swal.fire({
@@ -139,7 +140,24 @@ document.addEventListener('DOMContentLoaded', function () {
         request.onreadystatechange = function(){
           if(request.readyState != 4) return;
           if(request.status == 200){
-            console.log(request.responseText);
+            var objData = JSON.parse(request.responseText);
+            if(objData.status)
+            {
+              Swal.fire({
+                text: objData.msg,
+                icon: "success",
+                confirmButtonText: "Iniciar sesión",
+                
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location = base_url+'login';
+                }
+              });
+            }else{
+              Swal.fire("Atención", objData.msg, "error");
+            }
+          }else{
+            Swal.fire("Atención","Error en el proceso", "error");
           }
         }
       }

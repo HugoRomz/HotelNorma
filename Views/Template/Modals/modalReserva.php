@@ -11,13 +11,18 @@
             <div class="modal-body">
                 <div class="card card-success">
                     <!-- form start -->
-                    <form id="formHabitacion">
+                    <form id="formReservacion">
                         <div class="card-body">
                         <input type="hidden" class="form-control" name="idpago" id="idpago">
                             <div class="form-group">
                                 <label>Cliente:</label>
                                 <select class="form-control" id="selectCliente" data-live-search="true"
                                     name="selectCliente"></select>
+                            </div>
+                            <div class="form-group">
+                                <label> Numero de dias:</label>
+                                <input type="number" class="form-control" name="inputNumeroDias"
+                                    id="inputNumeroDias" value="">
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Entrada:</label>
