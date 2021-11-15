@@ -14,29 +14,19 @@ CREATE TABLE `cliente` (
 
 INSERT INTO cliente VALUES("HN-20da","Hugo Rafael","Rosales Meléndez","Tuxtla Chico","20","");
 INSERT INTO cliente VALUES("HN-47ea","Saul","Altuzar","Tapachula","19","");
+INSERT INTO cliente VALUES("HN-84da","Lucia","Sanchez","Cacahoatan","19","");
 INSERT INTO cliente VALUES("HN-9e0a","Carlos Alberto","Martinez Bonilla","Tapachula","20","");
+INSERT INTO cliente VALUES("HN-a5b7","Jilmar Joancy","Perello Solorio","Tapachula","20","");
 
 
 
 
 
 CREATE TABLE `detalle_pago` (
-  `no_habitacion` varchar(10) DEFAULT NULL,
+  `idreserva` varchar(10) DEFAULT NULL,
   `idpago` varchar(250) NOT NULL,
   `consecutivo` int(11) NOT NULL,
   PRIMARY KEY (`idpago`,`consecutivo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-
-
-
-
-CREATE TABLE `detalle_reservacion` (
-  `idreserva` varchar(250) NOT NULL,
-  `no_habitacion` varchar(10) DEFAULT NULL,
-  `consecutivo` int(11) NOT NULL,
-  PRIMARY KEY (`idreserva`,`consecutivo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -74,11 +64,11 @@ CREATE TABLE `habitacion` (
   CONSTRAINT `fk_tipo` FOREIGN KEY (`tipo`) REFERENCES `tipohabitacion` (`idTipoHabitacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO habitacion VALUES("101","1","700","1","2","0",".");
-INSERT INTO habitacion VALUES("102","2","900","1","4","1",".");
+INSERT INTO habitacion VALUES("101","1","700","1","2","1",".");
+INSERT INTO habitacion VALUES("102","2","900","1","4","0",".");
 INSERT INTO habitacion VALUES("103","2","900","1","4","0",".");
 INSERT INTO habitacion VALUES("104","3","1500","1","6","0",".");
-INSERT INTO habitacion VALUES("105","1","700","1","2","0",".");
+INSERT INTO habitacion VALUES("105","1","900","1","2","0",".");
 INSERT INTO habitacion VALUES("106","1","700","1","2","0",".");
 INSERT INTO habitacion VALUES("107","1","700","1","2","0",".");
 INSERT INTO habitacion VALUES("108","1","700","1","2","0",".");
@@ -109,6 +99,7 @@ CREATE TABLE `pago` (
   `concepto` text DEFAULT NULL,
   `fecha_salida` date DEFAULT NULL,
   `total` float DEFAULT NULL,
+  `no_dias` int(11) NOT NULL,
   `idcliente` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -127,8 +118,31 @@ CREATE TABLE `reservacion` (
   CONSTRAINT `reservacion_ibfk_1` FOREIGN KEY (`no_habitacion`) REFERENCES `habitacion` (`no_habitacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO reservacion VALUES("HN-001","101","0000-00-00","0000-00-00");
-INSERT INTO reservacion VALUES("HN-002","102","2021-11-14","2021-11-16");
+INSERT INTO reservacion VALUES("HNR-020d","301","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-0c54","302","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-265e","102","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-2da2","107","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-417a","206","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-6051","108","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-6cf2","104","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-6e84","306","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-7679","210","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-7b29","304","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-7e54","103","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-8e39","205","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-9b88","209","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-a79b","204","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-aa45","105","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-b38b","208","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-b97d","303","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-c626","203","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-c7c7","201","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-d782","305","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-dbf9","202","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-e5dd","207","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-e968","401","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-f47e","106","0000-00-00","0000-00-00");
+INSERT INTO reservacion VALUES("HNR-f6cc","101","0000-00-00","0000-00-00");
 
 
 
@@ -164,8 +178,8 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`idusuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO usuario VALUES("1","hotelnorma","hotelnorma","Norma ","Sanchez Cabrera","9621605433","Laureles 2","rosalesrafael1@hotmail.com","1","6feb783e678c99ef02ac-a97f5bab785a435b92a0-9a893bd948a17ee9d785-af15176da232c50be886");
-INSERT INTO usuario VALUES("6","Romz","melendez1R","Hugo","Rosales","9621705041","fdsafsd","carlitos1@hotmail.com","1","");
+INSERT INTO usuario VALUES("1","hotelnorma","hotelnorma","Norma ","Sanchez Cabrera","9621605433","Laureles 2","rosalesrafael1@hotmail.com","1","2e544e2b2fbc5e65fb9a-57948f4cbfe961c56299-6aab9ad0da9197759c21-4561a3a98512e7c7dfab");
+INSERT INTO usuario VALUES("6","Romz","melendez1R","Hugo","Rosales","9621705041","fdsafsd","carlitos1@hotmail.com","1","8de7d580006228e0e270-845466a3527151566075-09182f14d54a51d57a33-cef369e2f132b6352d8c");
 
 
 

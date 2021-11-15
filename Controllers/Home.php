@@ -34,6 +34,12 @@
 			echo json_encode($data);
             die();
         }
+		public function getCountClientes()
+        {
+            $data = $this->model->selectCountClientes();
+			echo json_encode($data);
+            die();
+        }
 
 	}
  ?>

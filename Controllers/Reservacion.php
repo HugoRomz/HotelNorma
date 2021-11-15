@@ -41,10 +41,31 @@
                 </div>';
             }
 			
+            if ($data[$i]['no_habitacion']==401) {
+                $data[$i]['options'] = '<div class="">
+                <button class="btn btn-outline-success" id="btnIngresoReservacion"  onclick="fntIngresoReservacion(this);" rl="'.$data[$i]['idreserva'].'" title="Ingreso" disabled>Ingreso</button>
+                </div>';
+            }
         }
         echo json_encode($data,JSON_UNESCAPED_UNICODE);
         die();
     }
+    
+    public function getSelectTipoCliente()
+    {
+        $htmlOptions = "";
+        $data = $this->model->SelectTipoCliente();
+        if (count($data)>0) {
+            for ($i=0; $i < count($data); $i++) { 
+           
+                $htmlOptions .='<option value="'.$data[$i]['idcliente'].'">'.$data[$i]['nombre'].'</option>';
+            }
+        }
+        echo $htmlOptions;
+        die();
+    }
+
+    
 
 	}
  ?>

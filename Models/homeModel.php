@@ -20,6 +20,12 @@
         $request = $this->select_all($sql);
         return $request;
     }
+    public function selectCountClientes()
+    {
+        $sql = "SELECT COUNT(idcliente)AS numeroH FROM cliente";
+        $request = $this->select_all($sql);
+        return $request;
+    }
 	}
 
 

@@ -14,7 +14,17 @@ class HabitacionModel extends Mysql
         $query_insert = "INSERT INTO habitacion (no_habitacion,tipo,precio,no_piso,no_personas,status,caracteristica) VALUES(?,?,?,?,?,?,?)";
         $arrData = array($idHabitacion,$strTipoHabitacion,$strPrecio,$NumeroPiso,$NumeroPersonas,$status,$CaracteristicaHabitacion);
         $request_insert = $this->insert($query_insert, $arrData);
+
+
+        $idreserva = idReserva();
+
+        $query_insert2 = "INSERT INTO reservacion (idreserva,no_habitacion) VALUES(?,?)";
+        $arrData2 = array($idreserva,$idHabitacion);
+        $request_insert2 = $this->insert($query_insert2, $arrData2);
+
         return $request_insert;
+
+
     }
 
     public function selectHabitacion()
@@ -50,8 +60,13 @@ class HabitacionModel extends Mysql
 
     public function delHabitacion($id)
     {
+
+        $sql2 = "DELETE FROM reservacion WHERE no_habitacion = $id";
+        $request2 = $this->delete($sql2);
+
         $sql = "DELETE FROM habitacion WHERE no_habitacion = $id";
         $request = $this->delete($sql);
+
         return $request;
     }
 }

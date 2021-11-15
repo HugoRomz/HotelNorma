@@ -3,7 +3,7 @@
   getModal('modalProfile',$data);
 
 ?>
-<html lang="es">
+<html lang="en">
 
 <head>
 <meta charset="utf-8">
@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Hugo Roms">
   <meta name="theme-color" content="#009688">
+
+  <link rel="shortcut icon" href="<?=media();?>/images/favicon.ico">
 
     <title><?= $data['page_tag'];?></title>
   

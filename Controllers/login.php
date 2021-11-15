@@ -80,6 +80,34 @@ class login extends Controllers{
         }
         die();
     }
+
+    public function confirmUser(string $params)
+    {
+        if(empty($params)){
+            header('Location: '.base_url());
+        }else{
+            $arrParams = explode(',',$params);
+            $strEmail = $arrParams[0];
+            $strToken = $arrParams[1];
+            $arrResponse = $this->model->getUsuario($strEmail,$strToken);
+            if(empty($arrResponse)){
+                header("Location: ".base_url());
+            }else{
+                $data['page_tag'] = "Cambiar contraseña"; 
+                $data['page_name'] = "cambiar_contrasenia";
+                $data['page_title'] = "Cambiar Contraseña <small> Hotel Norma </small>";
+                $data['idusuario'] = $arrResponse['idusuario'];
+                $data['page_function_js']="function_login.js";
+                $this->views->getView($this,"cambiar_password",$data);
+            }
+        }
+        die();
+    }
+
+    public function setPassword(){
+        dep($_POST);
+        die();
+    }
 }
 
 ?>

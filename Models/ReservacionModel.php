@@ -17,9 +17,22 @@ class ReservacionModel extends Mysql
     //     return $request_insert;
     // }
 
+    
+
     public function selectReservacion()
     {
-        $sql = "SELECT reservacion.*,habitacion.status FROM reservacion,habitacion WHERE reservacion.no_habitacion = habitacion.no_habitacion;";
+        $sql = "SELECT reservacion.*,tipohabitacion.Concepto,habitacion.status 
+                 FROM reservacion,habitacion,tipohabitacion 
+                 WHERE reservacion.no_habitacion = habitacion.no_habitacion 
+                 AND habitacion.tipo = tipohabitacion.idTipoHabitacion;";
+
+        $request = $this->select_all($sql);
+        return $request;
+    }
+
+    public function SelectTipoCliente()
+    {
+        $sql = "SELECT idcliente,nombre FROM cliente";
         $request = $this->select_all($sql);
         return $request;
     }

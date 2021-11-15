@@ -51,6 +51,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 "titleAttr":"Esportar a Excel",
                 "className": "btn btn-success"
             },{
+                "extend": "pdfHtml5",
+                "text": "<i class='fas fa-file-pdf'></i> PDF",
+                "titleAttr":"Esportar a PDF",
+                "className": "btn btn-danger"
+            },{
                 "extend": "csvHtml5",
                 "text": "<i class='fas fa-file-csv'></i> CSV",
                 "titleAttr":"Esportar a CSV",

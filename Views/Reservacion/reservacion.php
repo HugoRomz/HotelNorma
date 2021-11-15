@@ -1,6 +1,6 @@
 <?php 
     headerAdmin($data); 
-    // getModal('modalHabitacion',$data);
+    getModal('modalReserva',$data);
 ?>
 
 <main class="app-content">
@@ -19,8 +19,7 @@
             <div class="tile">
                 <div class="tile-body">
                     <h5>Registro de Reserva</h5>
-                    <button type="button" class="btn btn-danger" onclick="openModal();"><i
-                            class="fas fa-plus-circle"></i> Nuevo</button>
+                
                 </div>
                 <br>
                 <div class="row">
@@ -31,6 +30,7 @@
                                     <tr>
                                        <th>Id. Reserva</th>
                                        <th>No Habitacion</th>
+                                       <th>Tipo</th>
                                        <th>Fecha de Entrada</th>
                                        <th>Fecha Salida</th>
                                        <th>Estado</th>

@@ -82,6 +82,13 @@
          $token = 'HN-'.$r1;
          return $token;
      }
+     
+     function idReserva()
+     {
+         $r1 = bin2hex(random_bytes(2));
+         $token = 'HNR-'.$r1;
+         return $token;
+     }
     
     function passGenerator($length = 10)
     {
@@ -103,4 +110,19 @@
         return $cantidad;
     }
 
+    // function sendEmail($data,$template)
+    // {
+    //     $asunto = $data['asunto'];
+    //     $emailDestino = $data['email'];
+    //     $empresa = NOMBRE_REMITENTE;
+    //     $remitente = EMAIL_REMITENTE;
+    //     $emailCopia = !empty($data['emailCopia']) ? $data['emailCopia'] : "";
+    //     //Envio de correo
+    //     $de = "MIME-Version: 1.0\r\n";
+    //     $de .= "Content-type: text/html; charset=UTF-8\r\n";
+    //     $de .= "From: {$empresa} <{$remitente}>\r\n";
+    //     $de .= "Bcc: $emailCopia\r\n";
+    //     ob_start();
+    //     require_once("V")
+    // }
 ?>
