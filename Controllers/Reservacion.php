@@ -37,7 +37,7 @@
             }else {
                 $data[$i]['status'] = '<span class="badge badge-success">Libre</span>';
                 $data[$i]['options'] = '<div class="">
-                <button class="btn btn-outline-success" id="btnIngresoReservacion"  onclick="fntIngresoReservacion(this);" precio="'.$data[$i]['precio'].'" rl="'.$data[$i]['idreserva'].'"  title="Ingreso">Ingreso</button>
+                <button class="btn btn-outline-success" id="btnIngresoReservacion"  onclick="fntIngresoReservacion(this);" precio="'.$data[$i]['precio'].'" habitacion="'.$data[$i]['no_habitacion'].'"rl="'.$data[$i]['idreserva'].'"  title="Ingreso">Ingreso</button>
                 </div>';
             }
 			
@@ -68,28 +68,28 @@
     public function setReservacion()
     {
             $intIdPago = idPago();
-            $intPrecioHabitacion = intval($PrecioHabitacion);
+            $intPrecioHabitacion = intval($_POST['inputPrecioHabitacion']);
+            $intHabitacion = intval($_POST['inputHabitacion']);
             $strSelectCliente = strClean($_POST['selectCliente']);
-            $intNumeroDias= intval($_POST['inputNumeroDias']);
-            $strFechaEntrada = strClean($_POST['inputfechaEntrada']);
-            $strFechaSalida = strClean($_POST['inputfechaSalida']);
-            $strConcepto= strClean($_POST['inputConcepto']);
+            $strReserva = strClean($_POST['inputReserva']);
+            $Dias = strClean($_POST['inputNumeroDias']);
+            $strFechaSalida = strClean($_POST['inputFechaSalida']);
+            $strConcepto= strClean($_POST['selectConcepto']);
 
-            $total = 900*$intNumeroDias;
-        
-
-            if ($id == 0) {
+            
+            $total = $intPrecioHabitacion*$Dias;
+            $fechaActual = date('Y-m-d');
+            $status = 1;
+    
                 $option = 1;
                 //Crear
-                $request_Pago = $this->model->insertPago($intIdPago,$strConcepto,$strFechaSalida,$total,$intNumeroDias,$strSelectCliente);
-             }else {
-                //Actualizar
-                $request_Habitacion = $this->model->updateHabitacion($id,$IdHabitacion,$strTipoHabitacion,$strPrecio,$NumeroPiso,$NumeroPersona,$CaracteristicaHabitacion);
-                $option=2;
-            }
-      
+                $request_Pago = $this->model->insertPago($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$intHabitacion);
+            
             if($option == 1)
             {
+                $request_Habitacion = $this->model->updateHabitacion($intHabitacion,$status);
+                $request_Reservacion = $this->model->updateReserva($strReserva,$fechaActual,$strFechaSalida);
+
                 $arrResponse = array('status' => true, 'msg' => '1');
 
             }else if($option==2){

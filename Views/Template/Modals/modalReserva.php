@@ -11,7 +11,13 @@
             <div class="modal-body">
                 <div class="card card-success">
                     <!-- form start -->
+                    
+                    
                     <form id="formReservacion">
+                        <input type="hidden" class="form-control" name="inputPrecioHabitacion" id="inputPrecioHabitacion">
+                        <input type="hidden" class="form-control" name="inputHabitacion" id="inputHabitacion">
+                        <input type="hidden" class="form-control" name="inputReserva" id="inputReserva">
+                        
                         <div class="card-body">
                         <input type="hidden" class="form-control" name="idpago" id="idpago">
                             <div class="form-group">
@@ -20,14 +26,14 @@
                                     name="selectCliente"></select>
                             </div>
                             <div class="form-group">
-                                <label> Numero de dias:</label>
+                                <label>Numero de Dias:</label>
                                 <input type="number" class="form-control" name="inputNumeroDias"
-                                    id="inputNumeroDias" value="">
+                                    id="inputNumeroDias">
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Entrada:</label>
                                 <input type="date" class="form-control" name="inputFechaEntrada"
-                                    id="inputFechaEntrada" value=""disabled>
+                                    id="inputFechaEntrada"disabled>
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Salida:</label>
@@ -37,7 +43,7 @@
                                 <label>Concepto:</label>
                                <Select class="form-control" id="selectConcepto" data-live-search="true"
                                     name="selectConcepto">
-                                   <option value="Reserva">Reservacion</option>
+                                   <option value="Reservacion">Reservacion</option>
                                </Select>
                             </div>
                         </div>

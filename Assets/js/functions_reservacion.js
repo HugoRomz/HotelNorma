@@ -73,12 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             
             var strSelectCliente = document.querySelector('#selectCliente').value;
-            var intNumeroDias = document.querySelector('#inputNumeroDias').value;
             var strFechaEntrada = document.querySelector('#inputFechaEntrada').value;
             var strFechaSalida = document.querySelector('#inputFechaSalida').value;
-            var strConcepto = document.querySelector('#selectConcepto').value;
 
-            if (strSelectCliente=='', strFechaEntrada=='', strFechaSalida=='',  strConcepto=='', intNumeroDias=='') {
+            if (strSelectCliente=='') {
 
                 Swal.fire({
                     icon: 'error',
@@ -95,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
             var formData = new FormData(formReservacion);
             request.open('POST', ajaxUrl, true);
             request.send(formData);
-            console.log(request);
 
             request.onreadystatechange = function () {
 
@@ -103,8 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     var objData = JSON.parse(request.responseText);
 
                     if (objData.status) {
-                        $('#modalReserva').modal('hide');
+                        $('#modalreserva').modal('hide');
                         formReservacion.reset();
+                        fechaActual();
                       
                         if (objData.msg == '1') {
                             
@@ -178,7 +176,14 @@ function fntCliente() {
 }
 
 function fntIngresoReservacion(button) {
-    globalThis.PrecioHabitacion = button.getAttribute("precio");
 
+    var idHabitacion = button.getAttribute("precio");
+    var habitacion = button.getAttribute("habitacion");
+    var reserva = button.getAttribute("rl");
+
+       document.querySelector("#inputPrecioHabitacion").value = idHabitacion;
+       document.querySelector("#inputHabitacion").value = habitacion;
+       document.querySelector("#inputReserva").value = reserva;          
+             
     $('#modalreserva').modal('show');
 }

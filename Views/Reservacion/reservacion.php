@@ -29,8 +29,8 @@
                                 <thead>
                                     <tr>
                                        <th>Id. Reserva</th>
-                                       <th>No Habitacion</th>
-                                       <th>Tipo</th>
+                                       <th style="width: 10%;">No Habitacion</th>
+                                       <th style="width: 10%;">Tipo</th>
                                        <th>Fecha de Entrada</th>
                                        <th>Fecha Salida</th>
                                        <th>Estado</th>

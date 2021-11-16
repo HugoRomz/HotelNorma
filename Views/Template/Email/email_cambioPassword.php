@@ -92,7 +92,7 @@
 			<tr>
 				<td>
 					<div class="x_sgwrap">
-						<p>Hola <?= $data['nombreUsuario']; ?></p>
+						<p>Hola, <?= $data['nombreUsuario']; ?></p>
 					</div>
 					<p>Solicitud de acceso para el usuario: <strong><?= $data['email']; ?></strong></p>
 					<p>Has solicitado los datos de tu usuario, accede al enlace de abajo para confirmar tu contraseña. </p>

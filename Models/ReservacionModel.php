@@ -8,11 +8,14 @@ class ReservacionModel extends Mysql
     }
 
 
-    public function insertPago(int $intIdPago,String $strConcepto,String $strFechaSalida,int $total,int $intNumeroDias,String $strSelectCliente)
+    public function insertPago(int $intIdPago,String $strConcepto,String $Dias ,String $strFechaSalida,int $total,String $strSelectCliente,int $strHabitacion)
     {
-        $query_insert = "INSERT INTO pago (idpago,concepto,fecha_salida,total,no_dias,idcliente) VALUES(?,?,?,?,?,?)";
-        $arrData = array($intIdPago,$strConcepto,$strFechaSalida,$total,$intNumeroDias,$strSelectCliente);
+        $query_insert = "INSERT INTO pago (idpago,concepto,dias,fecha_salida,total,idcliente,no_habitacion) VALUES(?,?,?,?,?,?,?)";
+        $arrData = array($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$strHabitacion);
         $request_insert = $this->insert($query_insert, $arrData);
+
+
+
         return $request_insert;
     }
     
@@ -42,22 +45,29 @@ class ReservacionModel extends Mysql
     //     $request = $this->select($sql);
     //     return $request;
     // }
-    // public function updateHabitacion(String $id,String $idHabitacion,String $strTipoHabitacion,String $strPrecio,String $NumeroPiso,String $NumeroPersona,String $CaracteristicaHabitacion)
-    // {
-    //     $this->id = $id;
-    //     $this->IdHabitacion = $idHabitacion;
-    //     $this->tipo = $strTipoHabitacion;
-    //     $this->precio = $strPrecio;
-    //     $this->piso = $NumeroPiso;
-    //     $this->personas = $NumeroPersona;
-    //     $this->caracteristica = $CaracteristicaHabitacion;
+    public function updateHabitacion(int $idHabitacion,int $status)
+    {
 
-    //     $sql = "UPDATE Habitacion SET no_habitacion = ?,tipo=?,precio=?,no_piso=?,no_personas=?,caracteristica=? WHERE no_habitacion = $this->id";
-    //     $arrData = array($this->IdHabitacion,$this->tipo,$this->precio,$this->piso,$this->personas,$this->caracteristica);
-    //     $request = $this->update($sql, $arrData);
-    //     return $request;
-    // }
+        $this->IdHabitacion = $idHabitacion;
+        $this->status = $status;
 
+        $sql = "UPDATE habitacion SET status=? WHERE no_habitacion = $this->IdHabitacion";
+        $arrData = array($this->status);
+        $request = $this->update($sql, $arrData);
+        return $request;
+    } 
+    public function updateReserva(String $strReserva,String $fechaActual,String $strFechaSalida)
+    {
+        $this->IdReserva = $strReserva;
+        $this->fechaEntrada = $fechaActual;
+        $this->fechaSalida = $strFechaSalida;
+
+        $sql = "UPDATE reservacion SET fecha_ingreso=?,fecha_salida=? WHERE idreserva = '$this->IdReserva'";
+        $arrData = array($this->fechaEntrada,$this->fechaSalida);
+        $request = $this->update($sql, $arrData);
+        return $request;
+    }
+    
 
     // public function delHabitacion($id)
     // {

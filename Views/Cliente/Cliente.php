@@ -34,7 +34,6 @@
                                         <th>Apellido</th>
                                         <th>Direccion</th>
                                         <th>Edad</th>
-                                        <th>N° Habitacion</th>
                                         <th>OP</th>
                                     </tr>
                                 </thead>

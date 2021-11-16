@@ -29,9 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 "data": "edad"
             },
             {
-                "data": "no_habitacion"
-            },
-            {
                 "data": "options"
             }
         ],
