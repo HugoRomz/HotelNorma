@@ -73,8 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             
             var strSelectCliente = document.querySelector('#selectCliente').value;
-            var strFechaEntrada = document.querySelector('#inputFechaEntrada').value;
-            var strFechaSalida = document.querySelector('#inputFechaSalida').value;
+            
 
             if (strSelectCliente=='') {
 
@@ -118,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 'success'
                             )
                         }
+                        
+                        formReservacion.reset();
+                        fechaActual();
                         tableRerservacion.ajax.reload(function () {
 
                         });
@@ -195,6 +197,8 @@ function fntSalidaReservacion(button) {
             tableRerservacion.ajax.reload(function () {
 
             });
+            formReservacion.reset();
+                        fechaActual();
             
         }
     }
@@ -222,7 +226,8 @@ function fntImprimirReservacion(button) {
                 document.getElementById("total").innerHTML = objData.data.total;
                 document.getElementById("dias").innerHTML = objData.data.dias;
                 document.getElementById("nombre").innerHTML = objData.data.nombre;
-
+                formReservacion.reset();
+                fechaActual();
                 
             } else {
                  Swal.fire(
@@ -259,9 +264,66 @@ function fntIngresoReservacion(button) {
     var habitacion = button.getAttribute("habitacion");
     var reserva = button.getAttribute("rl");
 
+        document.querySelector("#selectCliente").removeAttribute('disabled');
+        document.querySelector("#selectConcepto").removeAttribute('disabled');
+        $('#selectCliente').selectpicker('render'); 
+        $('#selectConcepto').selectpicker('render');
+
        document.querySelector("#inputPrecioHabitacion").value = idHabitacion;
        document.querySelector("#inputHabitacion").value = habitacion;
        document.querySelector("#inputReserva").value = reserva;          
              
+    $('#modalreserva').modal('show');
+}
+
+function fntModificarReservacion(button) {
+
+    document.querySelector('#titleModal').innerHTML = "Actualizar";
+    document.querySelector('#btnText').innerHTML = "Actualizar";
+
+    var idReserva = button.getAttribute("rl");
+    var idHabitacion = button.getAttribute("precio");
+
+    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XNLHTTP');
+    var ajaxUrl = base_url + 'Reportes/imprimirReporte/' + idReserva ;
+    request.open("GET", ajaxUrl, true);
+    request.send();
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+
+            var objData = JSON.parse(request.responseText);
+            
+            if (objData.status) {
+                
+
+                document.querySelector("#inputReserva").value = idReserva;   
+                document.querySelector("#inputPrecioHabitacion").value = idHabitacion;
+                
+          
+                document.querySelector("#inputFechaSalida").value = objData.data.fecha_salida;
+                document.querySelector("#inputNumeroDias").value = objData.data.dias;
+                document.querySelector("#selectCliente").value = objData.data.idcliente;
+                document.querySelector("#selectConcepto").value = objData.data.concepto;
+                document.querySelector("#idpago1").value = objData.data.idpago;
+                
+
+                $('#selectCliente').selectpicker('render'); 
+                $('#selectConcepto').selectpicker('render');
+
+                
+                
+            } else {
+                 Swal.fire(
+                'Erro!',
+                'Se actualizo exitosamente',
+                'success'
+            );
+            }
+            
+           
+            
+        }
+    }
     $('#modalreserva').modal('show');
 }

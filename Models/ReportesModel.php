@@ -18,7 +18,7 @@ class ReportesModel extends Mysql
     public function selectIdPago($id)
     {
         
-        $sql = "SELECT pago.*,cliente.nombre FROM pago,cliente where pago.idcliente = cliente.idcliente and idreserva = '$id'";
+        $sql = " SELECT pago.*,cliente.nombre FROM pago,cliente where pago.idcliente = cliente.idcliente and idreserva = '$id' order by n desc limit 1";
         $request = $this->select($sql);
         return $request;
     }

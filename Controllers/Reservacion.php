@@ -30,7 +30,7 @@
 			if ($data[$i]['status']==1) {
                 $data[$i]['status'] = '<span class="badge badge-danger">Ocupado</span>';
                 $data[$i]['options'] = '<div class="">
-                <button class="btn btn-outline-success" id="btnModificarReservacion"  onclick="fntModificarReservacion(this);" rl="'.$data[$i]['idreserva'].'" title="Modificar">Modificar</button>
+                <button class="btn btn-outline-success" id="btnModificarReservacion"  onclick="fntModificarReservacion(this);" rl="'.$data[$i]['idreserva'].'"precio="'.$data[$i]['precio'].'" title="Modificar">Modificar</button>
                 <button class="btn btn-outline-warning" id="btnImprimirReservacion"  onclick="fntImprimirReservacion(this);" rl="'.$data[$i]['idreserva'].'" title="Imprimir">Imprimir</button>
                 <button class="btn btn-outline-primary" id="btnSalidaReservacion"  onclick="fntSalidaReservacion(this);" rl="'.$data[$i]['no_habitacion'].'" title="Salida">Salida</button>
                 </div>';
@@ -67,7 +67,7 @@
 
     public function setReservacion()
     {
-            $intIdPago = idPago();
+            $intIdPago1 = intval($_POST['idpago1']);
             $intPrecioHabitacion = intval($_POST['inputPrecioHabitacion']);
             $intHabitacion = intval($_POST['inputHabitacion']);
             $strSelectCliente = strClean($_POST['selectCliente']);
@@ -81,9 +81,18 @@
             $fechaActual = date('Y-m-d');
             $status = 1;
     
+            if ($intIdPago1 == 0) {
+                $intIdPago = idPago();
                 $option = 1;
                 //Crear
                 $request_Pago = $this->model->insertPago($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$intHabitacion,$strReserva);
+             }else {
+                //Actualizar
+
+                $request_pago = $this->model->updatePago($intIdPago1,$Dias,$strFechaSalida,$total);
+                $option=2;
+            }
+
             
             if($option == 1)
             {
@@ -93,6 +102,7 @@
                 $arrResponse = array('status' => true, 'msg' => '1');
 
             }else if($option==2){
+                $request_Reservacion = $this->model->updateReservafecha($strReserva,$strFechaSalida);
                 $arrResponse = array('status' => true, 'msg' => '2');
             }
         

@@ -13,14 +13,33 @@ class ReservacionModel extends Mysql
         $query_insert = "INSERT INTO pago (idpago,concepto,dias,fecha_salida,total,idcliente,no_habitacion,idreserva) VALUES(?,?,?,?,?,?,?,?)";
         $arrData = array($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$strHabitacion,$idreserva);
         $request_insert = $this->insert($query_insert, $arrData);
-
-
-
         return $request_insert;
     }
     
 
-    
+    public function updatePago(int $intIdPago,int $Dias,String $strFechaSalida,int $pago)
+    {
+
+        $this->idpago = $intIdPago;
+        $this->dias = $Dias;
+        $this->fechasalida = $strFechaSalida;
+        $this->pago = $pago;
+
+        $sql = "UPDATE pago SET dias=?,fecha_salida=?,total=? WHERE idpago = $this->idpago";
+        $arrData = array($this->dias,$this->fechasalida,$this->pago);
+        $request = $this->update($sql, $arrData);
+        return $request;
+    } 
+    public function updateReservaFecha(String $strReserva,String $strFechaSalida)
+    {
+        $this->IdReserva = $strReserva;
+        $this->fechaSalida = $strFechaSalida;
+
+        $sql = "UPDATE reservacion SET fecha_salida=? WHERE idreserva = '$this->IdReserva'";
+        $arrData = array($this->fechaSalida);
+        $request = $this->update($sql, $arrData);
+        return $request;
+    }
 
     public function selectReservacion()
     {
@@ -39,12 +58,6 @@ class ReservacionModel extends Mysql
         $request = $this->select_all($sql);
         return $request;
     }
-    // public function selectIdHabitacion($id)
-    // {
-    //     $sql = "SELECT * FROM habitacion WHERE no_habitacion = $id";
-    //     $request = $this->select($sql);
-    //     return $request;
-    // }
     public function updateHabitacion(int $idHabitacion,int $status)
     {
 
