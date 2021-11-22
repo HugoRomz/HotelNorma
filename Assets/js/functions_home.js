@@ -2,6 +2,7 @@ window.addEventListener('load',function(){
     fntOcupadoHabitacion();
     fntLibreHabitacion();
     fntClientes() ;
+    fntReportes();
 },false);
 
 function fntOcupadoHabitacion() {
@@ -47,6 +48,20 @@ function fntClientes() {
             document.getElementById("numeroClientes").innerHTML =obj[0].numeroH;
         }
     }
-    
+
     
 }
+function fntReportes() {
+    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XNLHTTP');
+    var ajaxUrl = base_url + 'Home/getCountReportes';
+    request.open('GET', ajaxUrl, true);
+    request.send();
+
+    request.onreadystatechange = function(){
+        if (request.readyState == 4 && request.status == 200)  {
+            var obj = JSON.parse(request.responseText);
+            document.getElementById("numeroReportes").innerHTML =obj[0].numeroH;
+        }
+    }
+}
+

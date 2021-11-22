@@ -41,6 +41,7 @@
           <p><b id="numeroHabitaciones"></b> - Disponibles</p>
         </div>
       </div>
+
     </a>
     </div>
     <div class="col-md-6 col-lg-4">
@@ -58,7 +59,7 @@
       <div class="widget-small primary coloured-icon"><i class="icon fas fa-clipboard-list fa-3x"></i>
         <div class="info">
           <h4>Reportes</h4>
-          <p><b>0</b></p>
+          <p><b id="numeroReportes"></b> - Guardados</p>
         </div>
       </div>
     </a>

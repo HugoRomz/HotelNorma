@@ -40,6 +40,12 @@
 			echo json_encode($data);
             die();
         }
+		public function getCountReportes()
+        {
+            $data = $this->model->selectCountReportes();
+			echo json_encode($data);
+            die();
+        }
 
 	}
  ?>

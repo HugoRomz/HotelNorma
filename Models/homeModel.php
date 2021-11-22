@@ -26,6 +26,12 @@
         $request = $this->select_all($sql);
         return $request;
     }
+    public function selectCountReportes()
+    {
+        $sql = "SELECT COUNT(idpago)AS numeroH FROM pago";
+        $request = $this->select_all($sql);
+        return $request;
+    }
 	}
 
 
