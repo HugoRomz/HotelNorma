@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 "data": "Concepto"
             },
             {
-                "data": "fecha_salida"
+                "data": "fecha_ingreso"
             },
             {
                 "data": "fecha_salida"
@@ -174,6 +174,84 @@ function fntCliente() {
     }
 
 }
+
+function fntSalidaReservacion(button) {
+
+    var idReserva = button.getAttribute("rl");
+
+    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XNLHTTP');
+    var ajaxUrl = base_url + 'reservacion/DeleteReserva/' + idReserva ;
+    request.open("GET", ajaxUrl, true);
+    request.send();
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            // console.log(request.responseText);
+            Swal.fire(
+                'Habitacion Libre!',
+                'Se actualizo exitosamente',
+                'success'
+            );
+            tableRerservacion.ajax.reload(function () {
+
+            });
+            
+        }
+    }
+}
+
+function fntImprimirReservacion(button) {
+
+    var idReserva = button.getAttribute("rl");
+
+    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XNLHTTP');
+    var ajaxUrl = base_url + 'Reportes/imprimirReporte/' + idReserva ;
+    request.open("GET", ajaxUrl, true);
+    request.send();
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+
+            var objData = JSON.parse(request.responseText);
+            
+            if (objData.status) {
+              
+                document.getElementById("idpago").innerHTML = objData.data.idpago;
+                document.getElementById("idCliente").innerHTML = objData.data.idcliente;
+                document.getElementById("fecha_salida").innerHTML = objData.data.fecha_salida;
+                document.getElementById("total").innerHTML = objData.data.total;
+                document.getElementById("dias").innerHTML = objData.data.dias;
+                document.getElementById("nombre").innerHTML = objData.data.nombre;
+
+                
+            } else {
+                 Swal.fire(
+                'Erro!',
+                'Se actualizo exitosamente',
+                'success'
+            );
+            }
+            
+           
+            
+        }
+    }
+    $('#modalTicket').modal('show');
+
+}
+function printDiv(Impresion) {
+     var contenido= document.getElementById(Impresion).innerHTML;
+     var contenidoOriginal= document.body.innerHTML;
+
+     document.body.innerHTML = contenido;
+
+     window.print();
+
+     document.body.innerHTML = contenidoOriginal;
+     location.reload();
+}
+
+
 
 function fntIngresoReservacion(button) {
 

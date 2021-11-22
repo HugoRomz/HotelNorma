@@ -16,7 +16,7 @@
                         <input type="hidden" class="form-control" name="id" id="id">
                             <div class="form-group">
                                 <label>Numero de Habitación:</label>
-                                <input type="text" class="form-control" name="idHabitacion" id="idHabitacion"
+                                <input type="number" min="1" class="form-control" name="idHabitacion" id="idHabitacion"
                                     placeholder="Numero de Habitación">
                             </div>
                             <div class="form-group">
@@ -26,17 +26,17 @@
                             </div>
                             <div class="form-group">
                                 <label>Precio:</label>
-                                <input type="text" class="form-control" name="inputPrecioHabitacion"
+                                <input type="number" min="1"  class="form-control" name="inputPrecioHabitacion"
                                     id="inputPrecioHabitacion" placeholder="Precio de Habitación">
                             </div>
                             <div class="form-group">
                                 <label>Numero de Piso:</label>
-                                <input type="text" class="form-control" name="inputNumeroPiso" id="inputNumeroPiso"
+                                <input type="number" min="1"  class="form-control" name="inputNumeroPiso" id="inputNumeroPiso"
                                     placeholder="Numero de piso">
                             </div>
                             <div class="form-group">
                                 <label>Numero de Personas:</label>
-                                <input type="text" class="form-control" name="inputNumeroPersonas" id="inputNumeroPersonas"
+                                <input type="number" min="1" class="form-control" name="inputNumeroPersonas" id="inputNumeroPersonas"
                                     placeholder="Numero de personas">
                             </div>
                             <div class="form-group">

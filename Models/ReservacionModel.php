@@ -8,10 +8,10 @@ class ReservacionModel extends Mysql
     }
 
 
-    public function insertPago(int $intIdPago,String $strConcepto,String $Dias ,String $strFechaSalida,int $total,String $strSelectCliente,int $strHabitacion)
+    public function insertPago(int $intIdPago,String $strConcepto,int $Dias ,String $strFechaSalida,int $total,String $strSelectCliente,int $strHabitacion,String $idreserva)
     {
-        $query_insert = "INSERT INTO pago (idpago,concepto,dias,fecha_salida,total,idcliente,no_habitacion) VALUES(?,?,?,?,?,?,?)";
-        $arrData = array($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$strHabitacion);
+        $query_insert = "INSERT INTO pago (idpago,concepto,dias,fecha_salida,total,idcliente,no_habitacion,idreserva) VALUES(?,?,?,?,?,?,?,?)";
+        $arrData = array($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$strHabitacion,$idreserva);
         $request_insert = $this->insert($query_insert, $arrData);
 
 
@@ -67,12 +67,13 @@ class ReservacionModel extends Mysql
         $request = $this->update($sql, $arrData);
         return $request;
     }
-    
+    public function DeleteHabitacion($id)
+    {
+        $sql = "UPDATE reservacion SET fecha_ingreso='0000-00-00',fecha_salida='0000-00-00' WHERE no_habitacion = '$id'";
+        $sql = "UPDATE habitacion SET status=0 WHERE no_habitacion = $id";
+        $request = $this->select($sql);
+        return $request;
+    }
 
-    // public function delHabitacion($id)
-    // {
-    //     $sql = "DELETE FROM habitacion WHERE no_habitacion = $id";
-    //     $request = $this->delete($sql);
-    //     return $request;
-    // }
+
 }

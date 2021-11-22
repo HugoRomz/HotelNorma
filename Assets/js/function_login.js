@@ -1,5 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  var divLoading = document.querySelector("#divLoading");
+  
   if (document.querySelector("#formLogin")) {
 
     let formLogin = document.querySelector("#formLogin");
@@ -18,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         return false;
       } else {
+
+        divLoading.style.display = "flex";
+
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxurl = base_url + '/Login/loginUser';
 
@@ -26,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         request.open("POST", ajaxurl, true);
         request.send(formData);
 
-        console.log(request);
         request.onreadystatechange = function () {
 
           if (request.readyState != 4) return;
@@ -37,10 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
               Swal.fire({
                 icon: 'error',
-                title: 'ATENCION',
-                text: 'Error',
+                title: 'Error',
+                text: 'Tus datos estan incorrectos',
               });
-              document.querySelector('#txtPassword').value = "";
+              document.querySelector('#idPassword').value = "";
+              
             }
           } else {
             Swal.fire({
@@ -48,9 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
               title: 'ATENCION',
               text: 'Error en el proceso',
             });
+          
+            
           }
-          return false;
+          divLoading.style.display = "none";
+          return false; 
         }
+       
+        
       }
 
     }
@@ -71,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         return false;
       } else {
-
+        divLoading.style.display = "flex";
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxurl = base_url + '/Login/resetPass';
         var formData = new FormData(formPasswordReset);
@@ -103,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }else {
             Swal.fire("Atención","Error en el proceso", "error");
           }
+          divLoading.style.display = "none";
           return false;
         }
 

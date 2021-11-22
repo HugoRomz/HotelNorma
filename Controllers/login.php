@@ -48,6 +48,7 @@ class login extends Controllers{
                     }
                 }
             }
+            sleep(1);
             echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
         }
         die();
@@ -90,6 +91,7 @@ class login extends Controllers{
                     }
                 }
             }
+            sleep(1);
             echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
         }
         die();

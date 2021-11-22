@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Numero de Dias:</label>
-                                <input type="number" class="form-control" name="inputNumeroDias"
+                                <input type="number" min="1"  class="form-control" name="inputNumeroDias"
                                     id="inputNumeroDias">
                             </div>
                             <div class="form-group">

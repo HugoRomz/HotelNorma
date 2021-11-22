@@ -32,13 +32,13 @@
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-clipboard-list"></i><span class="app-menu__label">Reporte</span></span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="<?=base_url();?>reporteCaja"><i class="icon fa fa-circle-o"></i>Facturacion</a></li>            
+            <li><a class="treeview-item" href="<?=base_url();?>Reportes"><i class="icon fa fa-circle-o"></i>Pagos</a></li>            
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-server"></i><span class="app-menu__label">Base de Datos</span></span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="<?=base_url();?>respaldo"><i class="icon fa fa-circle-o"></i>Respaldo</a></li>            
-            <li><a class="treeview-item" href="<?=base_url();?>vaciarbase"><i class="icon fa fa-circle-o"></i>Vaciar Base de Datos</a></li> 
+            <!-- <li><a class="treeview-item" href="<?=base_url();?>vaciarbase"><i class="icon fa fa-circle-o"></i>Vaciar Base de Datos</a></li>  -->
           </ul>
         </li>
         

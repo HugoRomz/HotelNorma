@@ -31,7 +31,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
-                                <input type="text" class="form-control" name="inputEdadCliente"
+                                <input type="number" min="18" class="form-control" name="inputEdadCliente"
                                     id="inputEdadCliente" placeholder="Edad del Cliente">
                             </div>
                         </div>

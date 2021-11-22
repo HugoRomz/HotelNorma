@@ -24,8 +24,6 @@
    <link rel="stylesheet" href="<?=media();?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
    <!-- Select -->
    <link rel="stylesheet" href="<?=media();?>/css/bootstrap-select.min.css">
-   <!-- calendar -->
- 
 
     </head>
 

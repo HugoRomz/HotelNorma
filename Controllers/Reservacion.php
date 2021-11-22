@@ -32,7 +32,7 @@
                 $data[$i]['options'] = '<div class="">
                 <button class="btn btn-outline-success" id="btnModificarReservacion"  onclick="fntModificarReservacion(this);" rl="'.$data[$i]['idreserva'].'" title="Modificar">Modificar</button>
                 <button class="btn btn-outline-warning" id="btnImprimirReservacion"  onclick="fntImprimirReservacion(this);" rl="'.$data[$i]['idreserva'].'" title="Imprimir">Imprimir</button>
-                <button class="btn btn-outline-primary" id="btnSalidaReservacion"  onclick="fntSalidaReservacion(this);" rl="'.$data[$i]['idreserva'].'" title="Salida">Salida</button>
+                <button class="btn btn-outline-primary" id="btnSalidaReservacion"  onclick="fntSalidaReservacion(this);" rl="'.$data[$i]['no_habitacion'].'" title="Salida">Salida</button>
                 </div>';
             }else {
                 $data[$i]['status'] = '<span class="badge badge-success">Libre</span>';
@@ -72,7 +72,7 @@
             $intHabitacion = intval($_POST['inputHabitacion']);
             $strSelectCliente = strClean($_POST['selectCliente']);
             $strReserva = strClean($_POST['inputReserva']);
-            $Dias = strClean($_POST['inputNumeroDias']);
+            $Dias = intval($_POST['inputNumeroDias']);
             $strFechaSalida = strClean($_POST['inputFechaSalida']);
             $strConcepto= strClean($_POST['selectConcepto']);
 
@@ -83,7 +83,7 @@
     
                 $option = 1;
                 //Crear
-                $request_Pago = $this->model->insertPago($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$intHabitacion);
+                $request_Pago = $this->model->insertPago($intIdPago,$strConcepto,$Dias,$strFechaSalida,$total,$strSelectCliente,$intHabitacion,$strReserva);
             
             if($option == 1)
             {
@@ -100,5 +100,23 @@
         die();
     }
 
+
+    public function DeleteReserva(String $idReserva)
+    {
+        $idReserva =strClean($idReserva);
+        if ($idReserva > 0) {
+            $arrData = $this->model->DeleteHabitacion($idReserva);
+            if (empty($arrData)) {
+                $arrResponse = array('status'=>false,'msg'=>'Datos no Encontrados.');
+            }else {
+                $arrResponse = array('status'=>true,'data'=>$arrData);
+            }
+            echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+        }
+        die();
+    }
+
 	}
+
+
  ?>

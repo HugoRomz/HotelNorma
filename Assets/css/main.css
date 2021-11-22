@@ -16737,3 +16737,22 @@ be a descendant of the grid when it is being dragged.
 .user .user-settings label {
   color: #666;
 }
+
+#divLoading{
+  position: absolute;
+  top: 0;
+  width:100%;
+  height: 100%;
+  background: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(254, 254, 255, .70);
+  z-index: 1;
+  display: none;
+} 
+
+#divLoading img{
+  width: 250px;
+  height: 250px;
+}
