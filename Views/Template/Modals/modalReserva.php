@@ -20,7 +20,7 @@
                         
                         <div class="card-body">
                         <input type="hidden" class="form-control" name="idpago" id="idpago">
-                        <input type="text" class="form-control" name="idpago1" id="idpago1">
+                        <input type="hidden" class="form-control" name="idpago1" id="idpago1">
                             <div class="form-group">
                                 <label>Cliente:</label>
                                 <select class="form-control" id="selectCliente" data-live-search="true"

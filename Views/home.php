@@ -45,7 +45,7 @@
     </a>
     </div>
     <div class="col-md-6 col-lg-4">
-     <a style="text-decoration:none" href="<?=base_url();?>rentaHabitacion">
+     <a style="text-decoration:none" href="<?=base_url();?>reservacion">
       <div class="widget-small primary coloured-icon"><i class="icon fas fa-concierge-bell fa-3x"></i>
         <div class="info">
           <h4>Estadia</h4>
@@ -55,7 +55,7 @@
      </a>
     </div>
     <div class="col-md-6 col-lg-4">
-     <a style="text-decoration:none" href="<?=base_url();?>reporteFacturacion">
+     <a style="text-decoration:none" href="<?=base_url();?>reportes">
       <div class="widget-small primary coloured-icon"><i class="icon fas fa-clipboard-list fa-3x"></i>
         <div class="info">
           <h4>Reportes</h4>
